@@ -1,0 +1,36 @@
+<div
+	class="row row-cols-1 row-cols-xs-2 row-cols-sm-3 row-cols-md-4 g-4 animated fadeIn"
+>
+	@for (item of items; track item.id) {
+	<div class="col">
+		<div class="spoti-card">
+			<img
+				class="spoti-card-image"
+				src="{{ item.images | noimage }}"
+				alt=""
+			/>
+			<div class="icon">
+				@if(item.album_type === 'album') {
+				<i class="bi bi-disc"></i>
+				} @else {
+				<i class="bi bi-music-note-beamed"></i>
+				}
+			</div>
+			<div class="spoti-card-body">
+				<h5 class="title">
+					{{ item.name }}
+				</h5>
+				<p class="artists">
+					@for (artist of item.artists; track $index) {
+					<span class="">{{ artist.name }}</span>
+					} @empty {
+					<span>No artists</span>
+					}
+				</p>
+			</div>
+		</div>
+	</div>
+	} @empty {
+	<p>There are no items.</p>
+	}
+</div>

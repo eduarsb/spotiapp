@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col">
+        <input #termino type="text" (keyup)="find(termino.value)" class="form-control" placeholder="Buscar artista">
+    </div>
+</div>
+@if (loading) {
+    <app-loading></app-loading>
+}  @else {
+    <app-cards [items]="artists"></app-cards>
+}
